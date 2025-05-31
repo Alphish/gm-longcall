@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ctor_LogInstruction",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ctor_LogInstruction",
+  "parent":{
+    "name":"Instructions",
+    "path":"folders/Demo/Instructions.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

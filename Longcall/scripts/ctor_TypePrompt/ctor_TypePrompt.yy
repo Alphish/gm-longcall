@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ctor_TypePrompt",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ctor_TypePrompt",
+  "parent":{
+    "name":"Instructions",
+    "path":"folders/Demo/Instructions.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
