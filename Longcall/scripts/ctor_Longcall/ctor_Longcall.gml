@@ -1,8 +1,15 @@
-function Longcall(_program) constructor {
+function Longcall(_program, _environment) constructor {
     program = _program;
+    environment = _environment;
+    
     instruction = _program.entry_instruction;
+    scope = new LongcallScope(environment);
     is_pending = false;
     is_finished = false;
+    
+    // -------
+    // Running
+    // -------
     
     static run_next = function() {
         if (!is_finished && !is_pending)
@@ -34,5 +41,33 @@ function Longcall(_program) constructor {
     
     static finish = function() {
         is_finished = true;
+    }
+    
+    // ------
+    // Values
+    // ------
+    
+    static declare_value = function(_name, _value = undefined) {
+        scope.declare_value(_name, _value);
+    }
+    
+    static get_value = function(_name) {
+        return scope.get_value(_name);
+    }
+    
+    static set_value = function(_name, _value) {
+        scope.set_value(_name, _value);
+    }
+    
+    // ------
+    // Scopes
+    // ------
+    
+    static enter_scope = function() {
+        scope = scope.enter_scope();
+    }
+    
+    static leave_scope = function() {
+        scope = scope.leave_scope();
     }
 }

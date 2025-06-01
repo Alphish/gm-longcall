@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ctor_LongcallScope",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ctor_LongcallScope",
+  "parent":{
+    "name":"Context",
+    "path":"folders/_Packages/Alphish/Longcall/Context.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
