@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ctor_LongcallDeclareInstruction",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ctor_LongcallDeclareInstruction",
+  "parent":{
+    "name":"Values",
+    "path":"folders/_Packages/Alphish/Longcall/Instructions/Values.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
