@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"funcs_LongcallOperator",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"funcs_LongcallOperator",
+  "parent":{
+    "name":"Expressions",
+    "path":"folders/_Packages/Alphish/Longcall/Expressions.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
