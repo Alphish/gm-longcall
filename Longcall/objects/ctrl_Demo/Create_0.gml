@@ -1,27 +1,31 @@
 var _instructions = [
     new LogInstruction("Hello"),
     
-    new DeclareValueInstruction("test", 123),
+    new LongcallDeclareInstruction("test", 123),
     new PrintValueInstruction("test"),
-    new SetValueInstruction("TEST", 456),
+    new LongcallSetInstruction("TEST", 456),
     new PrintValueInstruction("TesT"),
     
     new DialoguePrompt("Press Space or Enter to continue"),
     new LongcallEnterScopeInstruction(),
-    new DeclareValueInstruction("inner", "lorem"),
+    new LongcallDeclareInstruction("inner", "lorem"),
     new PrintValueInstruction("inner"),
-    new SetValueInstruction("inner", "ipsum"),
+    new LongcallSetInstruction("inner", "ipsum"),
     new PrintValueInstruction("inner"),
-    new DeclareValueInstruction("TEST", 789),
+    new LongcallDeclareInstruction("TEST", 789),
     new PrintValueInstruction("test"),
     new LongcallLeaveScopeInstruction(),
     new PrintValueInstruction("test"),
     
     new TypePrompt(),
     new LogReceivedInstruction(),
+
+    new LongcallDeclareInstruction("awsum", [2, 2, 2, LongcallOperator.multiply, LongcallOperator.add]),
+    new PrintValueInstruction("awsum"),
     new DialoguePrompt("This is all for now!"),
     
-    new PrintValueInstruction("time"),
+    new LongcallDeclareInstruction("xtime", ["Currently it's ", "@time", LongcallOperator.add]),
+    new PrintValueInstruction("xtime"),
     new LogInstruction("Goodbye"),
 ];
 
