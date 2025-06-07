@@ -1,9 +1,8 @@
 function Longcall(_program, _environment) constructor {
     program = _program;
     environment = _environment;
+    scope = program.create_initial_scope(environment);
     
-    instruction = _program.entry_instruction;
-    scope = new LongcallScope(environment);
     is_pending = false;
     is_finished = false;
     
@@ -12,13 +11,14 @@ function Longcall(_program, _environment) constructor {
     // -------
     
     static run_next = function() {
-        if (!is_finished && !is_pending)
-            instruction = instruction.execute(self, undefined) ?? (instruction.next ?? program.exit_instruction);
+        if (!is_finished && !is_pending) {
+            scope.execute_next(self, undefined);
+        }
     }
     
     static run = function() {
         while (!is_finished && !is_pending) {
-            instruction = instruction.execute(self, undefined) ?? (instruction.next ?? program.exit_instruction);
+            scope.execute_next(self, undefined);
         }
     }
     
@@ -31,7 +31,7 @@ function Longcall(_program, _environment) constructor {
             return;
         
         is_pending = false;
-        instruction = instruction.execute(self, _arg) ?? (instruction.next ?? program.exit_instruction);
+        scope.execute_next(self, _arg);
     }
     
     static resume = function(_arg = undefined) {
@@ -63,11 +63,13 @@ function Longcall(_program, _environment) constructor {
     // Scopes
     // ------
     
-    static enter_scope = function() {
-        scope = scope.enter_scope();
+    static enter_scope = function(_branch) {
+        scope = scope.enter_scope(_branch);
     }
     
     static leave_scope = function() {
         scope = scope.leave_scope();
+        if (is_undefined(scope))
+            is_finished = true;
     }
 }

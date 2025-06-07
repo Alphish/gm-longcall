@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"ctor_LongcallProgram",
+  "%Name":"ctor_LongcallBranch",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"ctor_LongcallProgram",
+  "name":"ctor_LongcallBranch",
   "parent":{
     "name":"Context",
     "path":"folders/_Packages/Alphish/Longcall/Context.yy",
