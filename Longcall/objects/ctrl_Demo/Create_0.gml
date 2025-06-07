@@ -7,15 +7,41 @@ var _inner = new LongcallBranch([
     new PrintValueInstruction("test"),
 ]);
 
+var _then1 = new LongcallBranch([
+    new LogInstruction("Then it happened"),
+]);
+
+var _then2 = new LongcallBranch([
+    new LogInstruction("Then another thing happened"),
+]);
+
+var _else2 = new LongcallBranch([
+    new LogInstruction("Then something else happened"),
+    new LogInstruction("Again and again"),
+]);
+
+var _while_body = new LongcallBranch([
+    new PrintValueInstruction("countdown"),
+    new LongcallSetInstruction("countdown", ["@countdown", 1, LongcallOperator.subtract]),
+]);
+
 var _outer = new LongcallBranch([
     new LogInstruction("Hello"),
     
+    new DialoguePrompt("Press Space or Enter to continue"),
     new LongcallDeclareInstruction("test", 123),
     new PrintValueInstruction("test"),
     new LongcallSetInstruction("TEST", 456),
     new PrintValueInstruction("TesT"),
     
-    new DialoguePrompt("Press Space or Enter to continue"),
+    new LongcallDeclareInstruction("condition1", true),
+    new LongcallIfInstruction("@condition1", _then1),
+    new LongcallDeclareInstruction("condition2", false),
+    new LongcallIfInstruction("@condition2", _then2, _else2),
+    
+    new LongcallDeclareInstruction("countdown", 5),
+    new LongcallWhileInstruction(["@countdown", 0, LongcallOperator.greater_or_equal], _while_body),
+    
     new LongcallEnterScopeInstruction(_inner),
     new PrintValueInstruction("test"),
     
