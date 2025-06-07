@@ -45,7 +45,6 @@
     {"id":{"name":"ctor_LongcallEnvironment","path":"scripts/ctor_LongcallEnvironment/ctor_LongcallEnvironment.yy",},},
     {"id":{"name":"ctor_LongcallEvaluation","path":"scripts/ctor_LongcallEvaluation/ctor_LongcallEvaluation.yy",},},
     {"id":{"name":"ctor_LongcallException","path":"scripts/ctor_LongcallException/ctor_LongcallException.yy",},},
-    {"id":{"name":"ctor_LongcallFinish","path":"scripts/ctor_LongcallFinish/ctor_LongcallFinish.yy",},},
     {"id":{"name":"ctor_LongcallInstruction","path":"scripts/ctor_LongcallInstruction/ctor_LongcallInstruction.yy",},},
     {"id":{"name":"ctor_LongcallLeaveScopeInstruction","path":"scripts/ctor_LongcallLeaveScopeInstruction/ctor_LongcallLeaveScopeInstruction.yy",},},
     {"id":{"name":"ctor_LongcallProgram","path":"scripts/ctor_LongcallProgram/ctor_LongcallProgram.yy",},},
