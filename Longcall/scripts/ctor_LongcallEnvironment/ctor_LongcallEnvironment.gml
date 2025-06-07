@@ -13,4 +13,8 @@ function LongcallEnvironment() constructor {
     static set_value = function(_key, _value) {
         throw LongcallException.not_implemented(self, nameof(set_value));
     }
+    
+    static check_truthiness = function(_value) {
+        throw LongcallException.unknown_truthiness(_value);
+    }
 }

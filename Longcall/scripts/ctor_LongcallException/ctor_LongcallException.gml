@@ -49,3 +49,10 @@ LongcallException.illegal_declaration_duplicate = function(_name) {
         $"Cannot declare a value of '{_name}' when such a value is already declared in the current scope."
         );
 }
+
+LongcallException.unknown_truthiness = function(_value) {
+    return new LongcallException(
+        nameof(unknown_truthiness),
+        $"Unable to determine a truthiness or falsiness of a non-boolean {typeof(_value)}: {_value}"
+        );
+}
