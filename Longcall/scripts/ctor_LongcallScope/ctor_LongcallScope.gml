@@ -1,10 +1,21 @@
-function LongcallScope(_environment,_parent = undefined) constructor {
+function LongcallScope(_branch, _environment, _parent = undefined) constructor {
+    branch = _branch;
+    branch_index = 0;
     environment = _environment;
     parent = _parent;
     
     declarations = is_undefined(parent) ? {} : parent.declarations;
     declared_keys = [];
     redeclarations = {};
+    
+    // ------------
+    // Instructions
+    // ------------
+    
+    static execute_next = function(_call, _arg = undefined) {
+        branch_index += 1;
+        branch.execute_at(branch_index - 1, _call, _arg);
+    }
     
     // ------
     // Values
@@ -60,8 +71,8 @@ function LongcallScope(_environment,_parent = undefined) constructor {
     // Scope
     // -----
     
-    static enter_scope = function() {
-        return new LongcallScope(environment, self);
+    static enter_scope = function(_branch) {
+        return new LongcallScope(_branch, environment, self);
     }
     
     static leave_scope = function() {

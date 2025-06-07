@@ -3,10 +3,7 @@ function LongcallDeclareInstruction(_name, _value) : LongcallInstruction() const
     value = _value;
     
     static execute = function(_call) {
-        var _result = LongcallEvaluation.create(value, _call);
-        if (is_instanceof(_result, LongcallEvaluation)) {
-            _result = _result.evaluate();
-        }
+        var _result = LongcallEvaluation.resolve(value, _call);
         _call.declare_value(name, _result);
     }
 }

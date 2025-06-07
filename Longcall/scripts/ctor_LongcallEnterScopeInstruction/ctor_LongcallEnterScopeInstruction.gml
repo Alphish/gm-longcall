@@ -1,5 +1,7 @@
-function LongcallEnterScopeInstruction() : LongcallInstruction() constructor {
-    static execute = function(_call, _args) {
-        _call.enter_scope();
+function LongcallEnterScopeInstruction(_branch) : LongcallInstruction() constructor {
+    branch = _branch;
+    
+    static execute = function(_call) {
+        _call.enter_scope(branch);
     }
 }

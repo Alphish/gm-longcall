@@ -27,6 +27,24 @@ LongcallEvaluation.create = function(_expression, _call) {
         return new LongcallEvaluation(_expression, _call);
 }
 
+LongcallEvaluation.resolve = function(_expression, _call) {
+    if (!is_array(_expression))
+        return LongcallEvaluation.evaluate_primitive(_expression, _call);
+    
+    var _evaluation = new LongcallEvaluation(_expression, _call);
+    return _evaluation.evaluate();
+}
+
+LongcallEvaluation.resolve_bool = function(_expression, _call) {
+    var _result = LongcallEvaluation.resolve(_expression, _call);
+    if (_result == true)
+        return true;
+    else if (_result == false)
+        return false;
+    else
+        return _call.environment.check_truthiness(_result);
+}
+
 LongcallEvaluation.evaluate_primitive = function(_value, _call) {
     if (!is_string(_value))
         return _value;
