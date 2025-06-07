@@ -22,6 +22,10 @@ function Longcall(_program, _environment) constructor {
         }
     }
     
+    static backtrack = function() {
+        scope.branch_index -= 1;
+    }
+    
     static pause = function() {
         is_pending = true;
     }
