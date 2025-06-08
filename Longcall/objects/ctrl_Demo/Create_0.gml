@@ -28,7 +28,7 @@ var _while_body = new LongcallBranch([
 var _outer = new LongcallBranch([
     new LogInstruction("Hello"),
     
-    new DialoguePrompt("Press Space or Enter to continue"),
+    new LongcallObjectPrompt(obj_Dialogue, { text: "Press Space or Enter to continue" }),
     new LongcallDeclareInstruction("test", 123),
     new PrintValueInstruction("test"),
     new LongcallSetInstruction("TEST", 456),
@@ -45,12 +45,12 @@ var _outer = new LongcallBranch([
     new LongcallEnterScopeInstruction(_inner),
     new PrintValueInstruction("test"),
     
-    new TypePrompt(),
+    new LongcallObjectPrompt(obj_Type),
     new LogReceivedInstruction(),
 
     new LongcallDeclareInstruction("awsum", [2, 2, 2, LongcallOperator.multiply, LongcallOperator.add]),
     new PrintValueInstruction("awsum"),
-    new DialoguePrompt("This is all for now!"),
+    new LongcallObjectPrompt(obj_Dialogue, { text: "This is all for now!" }),
     
     new LongcallDeclareInstruction("xtime", ["Currently it's ", "@time", LongcallOperator.add]),
     new PrintValueInstruction("xtime"),
