@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"ctor_LongcallPrompt",
+  "%Name":"ctor_LongcallObjectPrompt",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"ctor_LongcallPrompt",
+  "name":"ctor_LongcallObjectPrompt",
   "parent":{
     "name":"Prompts",
     "path":"folders/_Packages/Alphish/Longcall/Instructions/Prompts.yy",
