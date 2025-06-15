@@ -1,63 +1,56 @@
-var _inner = new LongcallBranch([
-    new LongcallDeclareInstruction("inner", "lorem"),
-    new PrintValueInstruction("inner"),
-    new LongcallSetInstruction("inner", "ipsum"),
-    new PrintValueInstruction("inner"),
-    new LongcallDeclareInstruction("TEST", 789),
-    new PrintValueInstruction("test"),
-]);
-
-var _then1 = new LongcallBranch([
-    new LogInstruction("Then it happened"),
-]);
-
-var _then2 = new LongcallBranch([
-    new LogInstruction("Then another thing happened"),
-]);
-
-var _else2 = new LongcallBranch([
-    new LogInstruction("Then something else happened"),
-    new LogInstruction("Again and again"),
-]);
-
-var _while_body = new LongcallBranch([
-    new PrintValueInstruction("countdown"),
-    new LongcallSetInstruction("countdown", ["@countdown", 1, LongcallOperator.subtract]),
-]);
-
-var _outer = new LongcallBranch([
-    new LogInstruction("Hello"),
+var _builder = new DemoProgramBuilder();
+with (_builder) {
+    log("Hello");
     
-    new LongcallObjectPrompt(obj_Dialogue, { text: "Press Space or Enter to continue" }),
-    new LongcallDeclareInstruction("test", 123),
-    new PrintValueInstruction("test"),
-    new LongcallSetInstruction("TEST", 456),
-    new PrintValueInstruction("TesT"),
+    prompt_with(obj_Dialogue, { text: "Press Space or Enter to continue" });
+    declare_value("test", 123);
+    print_value("test");
+    set_value("TEST", 456);
+    print_value("TesT");
     
-    new LongcallDeclareInstruction("condition1", true),
-    new LongcallIfInstruction("@condition1", _then1),
-    new LongcallDeclareInstruction("condition2", false),
-    new LongcallIfInstruction("@condition2", _then2, _else2),
+    declare_value("condition1", true);
+    begin_if("@condition1") {
+        log("Then it happened");
+    } end_if();
     
-    new LongcallDeclareInstruction("countdown", 5),
-    new LongcallWhileInstruction(["@countdown", 0, LongcallOperator.greater_or_equal], _while_body),
+    declare_value("condition2", false);
+    begin_if("@condition2") {
+        log("Then another thing happened");
+    } or_else() {
+        log("Then something else happened");
+        log("Again and again");
+    } end_if();
     
-    new LongcallEnterScopeInstruction(_inner),
-    new PrintValueInstruction("test"),
+    declare_value("countdown", 5);
     
-    new LongcallObjectPrompt(obj_Type),
-    new LogReceivedInstruction(),
+    begin_while(["@countdown", 0, LongcallOperator.greater_or_equal]) {
+        print_value("countdown");
+        set_value("countdown", ["@countdown", 1, LongcallOperator.subtract]);
+    } end_while();
+    
+    begin_scope() {
+        declare_value("inner", "lorem");
+        print_value("inner");
+        set_value("inner", "ipsum");
+        print_value("inner");
+        declare_value("TEST", 789);
+        print_value("test");
+    } end_scope();
+    print_value("test");
+    
+    prompt_with(obj_Type);
+    log_received();
 
-    new LongcallDeclareInstruction("awsum", [2, 2, 2, LongcallOperator.multiply, LongcallOperator.add]),
-    new PrintValueInstruction("awsum"),
-    new LongcallObjectPrompt(obj_Dialogue, { text: "This is all for now!" }),
+    declare_value("awsum", [2, 2, 2, LongcallOperator.multiply, LongcallOperator.add]);
+    print_value("awsum");
+    prompt_with(obj_Dialogue, { text: "This is all for now!" });
     
-    new LongcallDeclareInstruction("xtime", ["Currently it's ", "@time", LongcallOperator.add]),
-    new PrintValueInstruction("xtime"),
-    new LogInstruction("Goodbye"),
-]);
+    declare_value("xtime", ["Currently it's ", "@time", LongcallOperator.add]);
+    print_value("xtime");
+    log("Goodbye");
+}
 
-var _program = new LongcallProgram(_outer);
+var _program = _builder.build();
 var _environment = new DemoEnvironment();
 _environment.case_sensitive = false;
 _environment.can_redeclare = true;

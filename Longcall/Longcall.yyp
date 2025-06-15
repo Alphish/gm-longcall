@@ -38,6 +38,7 @@
     {"id":{"name":"par_LongcallPromptController","path":"objects/par_LongcallPromptController/par_LongcallPromptController.yy",},},
     {"id":{"name":"rm_Demo","path":"rooms/rm_Demo/rm_Demo.yy",},},
     {"id":{"name":"ctor_DemoEvironment","path":"scripts/ctor_DemoEvironment/ctor_DemoEvironment.yy",},},
+    {"id":{"name":"ctor_DemoProgramBuilder","path":"scripts/ctor_DemoProgramBuilder/ctor_DemoProgramBuilder.yy",},},
     {"id":{"name":"ctor_LogInstruction","path":"scripts/ctor_LogInstruction/ctor_LogInstruction.yy",},},
     {"id":{"name":"ctor_LogReceivedInstruction","path":"scripts/ctor_LogReceivedInstruction/ctor_LogReceivedInstruction.yy",},},
     {"id":{"name":"ctor_Longcall","path":"scripts/ctor_Longcall/ctor_Longcall.yy",},},
