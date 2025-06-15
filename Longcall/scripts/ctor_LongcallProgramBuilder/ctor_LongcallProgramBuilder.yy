@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ctor_LongcallProgramBuilder",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ctor_LongcallProgramBuilder",
+  "parent":{
+    "name":"Building",
+    "path":"folders/_Packages/Alphish/Longcall/Building.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
