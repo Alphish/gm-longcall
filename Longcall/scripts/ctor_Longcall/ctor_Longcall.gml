@@ -1,7 +1,9 @@
-function Longcall(_program, _environment) constructor {
+function Longcall(_program, _environment, _subroutine = undefined) constructor {
     program = _program;
     environment = _environment;
-    scope = program.create_initial_scope(environment);
+    scope = is_undefined(_subroutine)
+        ? program.create_entry_scope(environment)
+        : program.create_subroutine_scope(environment);
     
     is_pending = false;
     is_finished = false;
@@ -63,9 +65,9 @@ function Longcall(_program, _environment) constructor {
         scope.set_value(_name, _value);
     }
     
-    // ------
-    // Scopes
-    // ------
+    // ----
+    // Flow
+    // ----
     
     static enter_scope = function(_branch) {
         scope = scope.enter_scope(_branch);
@@ -75,5 +77,9 @@ function Longcall(_program, _environment) constructor {
         scope = scope.leave_scope();
         if (is_undefined(scope))
             is_finished = true;
+    }
+    
+    static jump_to = function(_subroutine) {
+        scope = program.create_subroutine_scope(_subroutine, environment);
     }
 }
