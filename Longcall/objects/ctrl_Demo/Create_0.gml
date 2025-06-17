@@ -43,11 +43,22 @@ with (_builder) {
 
     declare_value("awsum", [2, 2, 2, LongcallOperator.multiply, LongcallOperator.add]);
     print_value("awsum");
+    
+    declare_value("is_unpaid", true);
+    begin_if("@is_unpaid") {
+        jump_to("unpaid");
+    } end_if();
+    
     prompt_with(obj_Dialogue, { text: "This is all for now!" });
     
     declare_value("xtime", ["Currently it's ", "@time", LongcallOperator.add]);
     print_value("xtime");
     log("Goodbye");
+    
+    begin_subroutine("unpaid");
+    
+    prompt_with(obj_Dialogue, { text: "This functionality is unavailable for unpaid users." });
+    log("Goodbye anyway");
 }
 
 var _program = _builder.build();

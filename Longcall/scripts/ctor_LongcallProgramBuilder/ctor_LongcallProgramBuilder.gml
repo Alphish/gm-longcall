@@ -1,6 +1,10 @@
 function LongcallProgramBuilder() {
     root_branch = new LongcallBranchBuilder();
+    subroutine_name = undefined;
     current_branch = root_branch;
+    
+    built_entry = undefined;
+    built_subroutines = {};
     
     static add_instruction = function(_instruction) {
         current_branch.accept_instruction(_instruction);
@@ -26,9 +30,24 @@ function LongcallProgramBuilder() {
         return current_branch.take_branch(_name);
     }
     
-    static build = function() {
+    static end_subroutine = function() {
         var _branch = root_branch.build();
-        return new LongcallProgram(_branch);
+        if (is_undefined(subroutine_name))
+            built_entry = _branch;
+        else
+            built_subroutines[$ subroutine_name] = _branch;
+    }
+    
+    static begin_subroutine = function(_name) {
+        end_subroutine();
+        root_branch = new LongcallBranchBuilder();
+        current_branch = root_branch;
+        subroutine_name = _name;
+    }
+    
+    static build = function() {
+        end_subroutine();
+        return new LongcallProgram(built_entry, built_subroutines);
     }
     
     // ------
@@ -59,6 +78,13 @@ function LongcallProgramBuilder() {
         end_branch();
         var _branch = take_branch("scope").build();
         var _instruction = new LongcallEnterScopeInstruction(_branch);
+        add_instruction(_instruction);
+    }
+    
+    // Jump
+    
+    static jump_to = function(_subroutine) {
+        var _instruction = new LongcallJumpInstruction(_subroutine);
         add_instruction(_instruction);
     }
     
