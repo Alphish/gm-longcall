@@ -8,6 +8,6 @@ function LongcallWhileInstruction(_condition, _branch) : LongcallInstruction() c
             return;
         
         _call.backtrack(); // go back to the while instruction to run it again
-        _call.enter_scope(branch);
+        _call.enter_breakable(branch);
     }
 }

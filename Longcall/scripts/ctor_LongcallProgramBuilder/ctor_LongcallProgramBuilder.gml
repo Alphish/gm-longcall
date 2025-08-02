@@ -81,7 +81,17 @@ function LongcallProgramBuilder() {
         add_instruction(_instruction);
     }
     
-    // Jump
+    // Jumps
+    
+    static then_continue = function() {
+        var _instruction = new LongcallContinueInstruction();
+        add_instruction(_instruction);
+    }
+    
+    static then_break = function() {
+        var _instruction = new LongcallBreakInstruction();
+        add_instruction(_instruction);
+    }
     
     static jump_to = function(_subroutine) {
         var _instruction = new LongcallJumpInstruction(_subroutine);

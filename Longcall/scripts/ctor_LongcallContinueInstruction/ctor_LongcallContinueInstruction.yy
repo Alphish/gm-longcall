@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ctor_LongcallContinueInstruction",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ctor_LongcallContinueInstruction",
+  "parent":{
+    "name":"Flow",
+    "path":"folders/_Packages/Alphish/Longcall/Instructions/Flow.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
