@@ -28,6 +28,10 @@ function Longcall(_program, _environment, _subroutine = undefined) constructor {
         scope.branch_index -= 1;
     }
     
+    static skip = function() {
+        scope.branch_index += 1;
+    }
+    
     static pause = function() {
         is_pending = true;
     }
@@ -73,8 +77,18 @@ function Longcall(_program, _environment, _subroutine = undefined) constructor {
         scope = scope.enter_scope(_branch);
     }
     
+    static enter_breakable = function(_branch) {
+        scope = scope.enter_breakable(_branch);
+    }
+    
     static leave_scope = function() {
         scope = scope.leave_scope();
+        if (is_undefined(scope))
+            is_finished = true;
+    }
+    
+    static leave_breakable = function() {
+        scope = scope.leave_breakable();
         if (is_undefined(scope))
             is_finished = true;
     }

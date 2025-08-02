@@ -56,3 +56,10 @@ LongcallException.unknown_truthiness = function(_value) {
         $"Unable to determine a truthiness or falsiness of a non-boolean {typeof(_value)}: {_value}"
         );
 }
+
+LongcallException.illegal_break = function(_value) {
+    return new LongcallException(
+        nameof(illegal_break),
+        $"'break' and 'continue' instructions can only be used within a breakable scope."
+        );
+}

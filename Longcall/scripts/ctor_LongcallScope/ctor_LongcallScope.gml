@@ -3,6 +3,7 @@ function LongcallScope(_branch, _environment, _parent = undefined) constructor {
     branch_index = 0;
     environment = _environment;
     parent = _parent;
+    is_breakable = false;
     
     declarations = is_undefined(parent) ? {} : parent.declarations;
     declared_keys = [];
@@ -75,6 +76,12 @@ function LongcallScope(_branch, _environment, _parent = undefined) constructor {
         return new LongcallScope(_branch, environment, self);
     }
     
+    static enter_breakable = function(_branch) {
+        var _scope = new LongcallScope(_branch, environment, self);
+        _scope.is_breakable = true;
+        return _scope;
+    }
+    
     static leave_scope = function() {
         array_foreach(declared_keys, function(_key) {
             if (struct_exists(redeclarations, _key))
@@ -83,5 +90,16 @@ function LongcallScope(_branch, _environment, _parent = undefined) constructor {
                 struct_remove(declarations, _key);
         });
         return parent;
+    }
+    
+    static leave_breakable = function() {
+        var _scope = self;
+        while (!_scope.is_breakable) {
+            _scope = _scope.leave_scope();
+            if (is_undefined(_scope))
+                throw LongcallException.illegal_break();
+        }
+        
+        return _scope.leave_scope();
     }
 }
