@@ -21,11 +21,22 @@ with (_builder) {
         log("Again and again");
     } end_if();
     
-    declare_value("countdown", 5);
+    declare_value("countdown", 10);
     
     begin_while(["@countdown", 0, LongcallOperator.greater_or_equal]) {
+        begin_if(["@countdown", 7, LongcallOperator.equal]) {
+            log("???");
+            set_value("countdown", ["@countdown", 1, LongcallOperator.subtract]);
+            then_continue();
+        } end_if();
+        
         print_value("countdown");
         set_value("countdown", ["@countdown", 1, LongcallOperator.subtract]);
+        
+        begin_if(["@countdown", 3, LongcallOperator.equal]) {
+            log("!!!");
+            then_break();
+        } end_if();
     } end_while();
     
     begin_scope() {
