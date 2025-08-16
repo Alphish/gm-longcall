@@ -50,6 +50,13 @@ LongcallException.illegal_declaration_duplicate = function(_name) {
         );
 }
 
+LongcallException.unresolved_evaluation = function(_count) {
+    return new LongcallException(
+        nameof(unresolved_evaluation),
+        $"The expression evaluation couldn't be resolved to a single result. {_count} values found at the end."
+        );
+}
+
 LongcallException.unknown_truthiness = function(_value) {
     return new LongcallException(
         nameof(unknown_truthiness),

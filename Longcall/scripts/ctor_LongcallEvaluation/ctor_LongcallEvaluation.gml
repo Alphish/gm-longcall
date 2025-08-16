@@ -16,6 +16,11 @@ function LongcallEvaluation(_expression, _call) constructor {
             
             index++;
         }
+        
+        var _resolved_count = array_length(stack);
+        if (_resolved_count != 1)
+            throw LongcallException.unresolved_evaluation(_resolved_count);
+        
         return stack[0];
     }
 }
