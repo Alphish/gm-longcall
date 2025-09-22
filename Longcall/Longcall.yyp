@@ -62,6 +62,7 @@
     {"id":{"name":"ctor_LongcallProgramBuilder","path":"scripts/ctor_LongcallProgramBuilder/ctor_LongcallProgramBuilder.yy",},},
     {"id":{"name":"ctor_LongcallPrompt","path":"scripts/ctor_LongcallPrompt/ctor_LongcallPrompt.yy",},},
     {"id":{"name":"ctor_LongcallScope","path":"scripts/ctor_LongcallScope/ctor_LongcallScope.yy",},},
+    {"id":{"name":"ctor_LongcallScopedOperator","path":"scripts/ctor_LongcallScopedOperator/ctor_LongcallScopedOperator.yy",},},
     {"id":{"name":"ctor_LongcallSetInstruction","path":"scripts/ctor_LongcallSetInstruction/ctor_LongcallSetInstruction.yy",},},
     {"id":{"name":"ctor_LongcallUnaryOperator","path":"scripts/ctor_LongcallUnaryOperator/ctor_LongcallUnaryOperator.yy",},},
     {"id":{"name":"ctor_LongcallWhileInstruction","path":"scripts/ctor_LongcallWhileInstruction/ctor_LongcallWhileInstruction.yy",},},
