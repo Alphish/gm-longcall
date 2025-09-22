@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"funcs_LongcallOperator",
+  "%Name":"ctor_LongcallUnaryOperator",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"funcs_LongcallOperator",
+  "name":"ctor_LongcallUnaryOperator",
   "parent":{
     "name":"Expressions",
     "path":"folders/_Packages/Alphish/Longcall/Expressions.yy",

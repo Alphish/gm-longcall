@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ctor_LongcallBinaryOperator",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ctor_LongcallBinaryOperator",
+  "parent":{
+    "name":"Expressions",
+    "path":"folders/_Packages/Alphish/Longcall/Expressions.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
