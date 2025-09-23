@@ -2,11 +2,39 @@ var _builder = new DemoProgramBuilder();
 with (_builder) {
     log("Hello");
     
+    push_true = function(_evaluation) {
+        show_debug_message("pushing true...");
+        array_push(_evaluation.stack, true);
+    }
+
+    push_false = function(_evaluation) {
+        show_debug_message("pushing false...");
+        array_push(_evaluation.stack, false);
+    }
+    
     prompt_with(obj_Dialogue, { text: "Press Space or Enter to continue" });
     declare_value("test", 123);
     print_value("test");
     set_value("TEST", 456);
     print_value("TesT");
+    
+    begin_if([LongcallOperator.open_scope, push_true, LongcallOperator.short_and, push_false, LongcallOperator.short_and, push_true, LongcallOperator.close_scope]) {
+        log("Condition met");
+    } or_else() {
+        log("Condition unmet");
+    } end_if();
+
+    begin_if([LongcallOperator.open_scope, push_false, LongcallOperator.short_or, push_true, LongcallOperator.short_or, LongcallOperator.open_scope, LongcallOperator.close_scope, push_false, LongcallOperator.close_scope]) {
+        log("Condition 2 met");
+    } or_else() {
+        log("Condition 2 unmet");
+    } end_if();
+    
+    begin_if([LongcallOperator.open_scope, push_false, LongcallOperator.short_or, push_false, LongcallOperator.short_or, LongcallOperator.open_scope, LongcallOperator.close_scope, push_false, LongcallOperator.close_scope]) {
+        log("Condition 3 met");
+    } or_else() {
+        log("Condition 3 unmet");
+    } end_if();
     
     declare_value("condition1", true);
     begin_if("@condition1") {

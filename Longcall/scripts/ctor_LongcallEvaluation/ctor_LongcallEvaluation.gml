@@ -9,7 +9,9 @@ function LongcallEvaluation(_expression, _call) constructor {
     static evaluate = function() {
         while (index < count) {
             var _element = expression[index];
-            if (is_method(_element))
+            if (is_instanceof(_element, LongcallOperator))
+                _element.apply(self);
+            else if (is_method(_element))
                 _element(self);
             else
                 array_push(stack, LongcallEvaluation.evaluate_primitive(_element, call));

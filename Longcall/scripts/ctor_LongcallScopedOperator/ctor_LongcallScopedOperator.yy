@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ctor_LongcallScopedOperator",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ctor_LongcallScopedOperator",
+  "parent":{
+    "name":"Expressions",
+    "path":"folders/_Packages/Alphish/Longcall/Expressions.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
