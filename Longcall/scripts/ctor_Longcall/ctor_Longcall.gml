@@ -3,7 +3,7 @@ function Longcall(_program, _environment, _subroutine = undefined) constructor {
     environment = _environment;
     scope = is_undefined(_subroutine)
         ? program.create_entry_scope(environment)
-        : program.create_subroutine_scope(environment);
+        : program.create_subroutine_scope(_subroutine, environment);
     
     is_pending = false;
     is_finished = false;
