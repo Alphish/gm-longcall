@@ -18,7 +18,6 @@ LongcallOperator.close_scope = new LongcallOperator(nameof(close_scope), functio
 
 LongcallOperator.short_or = new LongcallScopedOperator(nameof(short_or), function(_evaluation) {
     var _stack = _evaluation.stack;
-    show_debug_message(_stack);
     if (array_last(_stack) == true) {
         skip_scope(_evaluation);
     } else {
