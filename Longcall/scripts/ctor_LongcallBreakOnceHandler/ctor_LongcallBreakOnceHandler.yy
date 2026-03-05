@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"ctor_LongcallWhileInstruction",
+  "%Name":"ctor_LongcallBreakOnceHandler",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"ctor_LongcallWhileInstruction",
+  "name":"ctor_LongcallBreakOnceHandler",
   "parent":{
     "name":"Flow",
     "path":"folders/_Packages/Alphish/Longcall/Instructions/Flow.yy",

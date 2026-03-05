@@ -1,3 +1,7 @@
+// -------
+// Methods
+// -------
+
 proceed = function() {
     var _call = call;
     instance_destroy();

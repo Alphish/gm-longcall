@@ -134,7 +134,7 @@ function LongcallProgramBuilder() {
         end_branch();
         var _condition = take_builder_value("condition");
         var _body = take_branch("body").build();
-        var _instruction = new LongcallWhileInstruction(_condition, _body);
+        var _instruction = new LongcallWhileBlock(_condition, _body);
         add_instruction(_instruction);
     }
     
@@ -144,6 +144,39 @@ function LongcallProgramBuilder() {
     
     static prompt_with = function(_object, _params = undefined) {
         var _instruction = new LongcallObjectPrompt(_object, _params);
+        add_instruction(_instruction);
+    }
+    
+    // Choice
+    
+    static prompt_choice_with = function(_object, _params = undefined) {
+        store_builder_value("choice_object", _object);
+        store_builder_value("choice_params", _params);
+        begin_branch("choice_resolve");
+    }
+    
+    static end_choice = function() {
+        end_branch();
+        var _object = take_builder_value("choice_object");
+        var _params = take_builder_value("choice_params");
+        var _resolve_branch = take_branch("choice_resolve").build();
+        var _instruction = new LongcallChoiceObjectPrompt(_resolve_branch, _object, _params);
+        add_instruction(_instruction);
+        
+        var _choice_entry = new LongcallEnterReceivedScopeInstruction();
+        add_instruction(_choice_entry);
+    }
+    
+    static add_choice_option = function(_data) {
+        store_builder_value("choice_option_data", _data);
+        begin_branch("choice_option_branch");
+    }
+    
+    static end_choice_option = function() {
+        end_branch();
+        var _data = take_builder_value("choice_option_data");
+        var _branch = take_branch("choice_option_branch").build();
+        var _instruction = new LongcallChoiceOptionInstruction(_data, _branch);
         add_instruction(_instruction);
     }
 }

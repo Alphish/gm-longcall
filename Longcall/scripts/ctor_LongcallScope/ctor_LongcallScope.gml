@@ -1,9 +1,11 @@
-function LongcallScope(_branch, _environment, _parent = undefined) constructor {
+function LongcallScope(_branch, _environment, _parent = undefined, _block = undefined) constructor {
     branch = _branch;
     branch_index = 0;
     environment = _environment;
     parent = _parent;
-    is_breakable = false;
+    origin_block = _block;
+    
+    instruction_handlers = {};
     
     declarations = is_undefined(parent) ? {} : parent.declarations;
     declared_keys = [];
@@ -13,9 +15,24 @@ function LongcallScope(_branch, _environment, _parent = undefined) constructor {
     // Instructions
     // ------------
     
+    static add_handler = function(_handler) {
+        if (is_callable(_handler))
+            _handler = new _handler(self);
+        
+        instruction_handlers[$ _handler.type] = _handler;
+    }
+    
     static execute_next = function(_call, _arg = undefined) {
         branch_index += 1;
         branch.execute_at(branch_index - 1, _call, _arg);
+    }
+    
+    static try_handle = function(_instruction, _call, _arg = undefined) {
+        var _handler = instruction_handlers[$ _instruction.type];
+        if (is_undefined(_handler))
+            return false;
+        
+        return _handler.try_handle(_instruction, _call, _arg) ?? true;
     }
     
     // ------
@@ -72,17 +89,7 @@ function LongcallScope(_branch, _environment, _parent = undefined) constructor {
     // Scope
     // -----
     
-    static enter_scope = function(_branch) {
-        return new LongcallScope(_branch, environment, self);
-    }
-    
-    static enter_breakable = function(_branch) {
-        var _scope = new LongcallScope(_branch, environment, self);
-        _scope.is_breakable = true;
-        return _scope;
-    }
-    
-    static leave_scope = function() {
+    static leave = function() {
         array_foreach(declared_keys, function(_key) {
             if (struct_exists(redeclarations, _key))
                 declarations[$ _key] = redeclarations[$ _key];
@@ -92,14 +99,8 @@ function LongcallScope(_branch, _environment, _parent = undefined) constructor {
         return parent;
     }
     
-    static leave_breakable = function() {
-        var _scope = self;
-        while (!_scope.is_breakable) {
-            _scope = _scope.leave_scope();
-            if (is_undefined(_scope))
-                throw LongcallException.illegal_break();
-        }
-        
-        return _scope.leave_scope();
+    static after_leave = function(_call) {
+        if (!is_undefined(origin_block))
+            origin_block.on_close(_call, self);
     }
 }

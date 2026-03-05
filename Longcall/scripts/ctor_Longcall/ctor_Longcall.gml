@@ -73,22 +73,24 @@ function Longcall(_program, _environment, _subroutine = undefined) constructor {
     // Flow
     // ----
     
-    static enter_scope = function(_branch) {
-        scope = scope.enter_scope(_branch);
+    static enter_scope = function(_scope) {
+        scope = _scope;
     }
     
-    static enter_breakable = function(_branch) {
-        scope = scope.enter_breakable(_branch);
+    static leave_scope = function(_scope = undefined) {
+        _scope ??= scope;
+        while (scope != _scope) {
+            leave_current_scope();
+            if (is_undefined(scope))
+                throw LongcallException.leaving_unrelated_scope(_scope);
+        }
+        leave_current_scope();
     }
     
-    static leave_scope = function() {
-        scope = scope.leave_scope();
-        if (is_undefined(scope))
-            is_finished = true;
-    }
-    
-    static leave_breakable = function() {
-        scope = scope.leave_breakable();
+    static leave_current_scope = function() {
+        var _left_scope = scope;
+        scope = _left_scope.leave();
+        _left_scope.after_leave(self);
         if (is_undefined(scope))
             is_finished = true;
     }
