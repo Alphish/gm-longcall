@@ -77,14 +77,38 @@ with (_builder) {
     } end_scope();
     print_value("test");
     
+    declare_value("is_paid", false);
+    
+    prompt_choice_with(obj_Choice, { question: "Which theme do you prefer?" }) {
+        add_choice_option("Red") {
+            prompt_with(obj_Dialogue, { text: "Roses are red" });
+            prompt_with(obj_Dialogue, { text: "Violets are red too" });
+        } end_choice_option();
+        
+        add_choice_option("Green") {
+            prompt_with(obj_Dialogue, { text: "Green is not a creative colour." });
+        } end_choice_option();
+        
+        add_choice_option("Blue") {
+            prompt_with(obj_Dialogue, { text: "The sky is blue, and so am I." });
+        } end_choice_option();
+        
+        begin_if(["@is_paid", LongcallOperator.logical_not]) {
+            then_break();
+        } end_if();
+        
+        add_choice_option("Purple") {
+            prompt_with(obj_Dialogue, { text: "Only for the finest customers!" });
+        } end_choice_option();
+    } end_choice();
+    
     prompt_with(obj_Type);
     log_received();
 
     declare_value("awsum", [2, 2, 2, LongcallOperator.multiply, LongcallOperator.add]);
     print_value("awsum");
     
-    declare_value("is_unpaid", true);
-    begin_if("@is_unpaid") {
+    begin_if(["@is_paid", LongcallOperator.logical_not]) {
         jump_to("unpaid");
     } end_if();
     
