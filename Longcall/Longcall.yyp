@@ -59,6 +59,7 @@
     {"id":{"name":"ctor_LongcallContinueInstruction","path":"scripts/ctor_LongcallContinueInstruction/ctor_LongcallContinueInstruction.yy",},},
     {"id":{"name":"ctor_LongcallContinueLoopHandler","path":"scripts/ctor_LongcallContinueLoopHandler/ctor_LongcallContinueLoopHandler.yy",},},
     {"id":{"name":"ctor_LongcallDeclareInstruction","path":"scripts/ctor_LongcallDeclareInstruction/ctor_LongcallDeclareInstruction.yy",},},
+    {"id":{"name":"ctor_LongcallEnterReceivedScopeInstruction","path":"scripts/ctor_LongcallEnterReceivedScopeInstruction/ctor_LongcallEnterReceivedScopeInstruction.yy",},},
     {"id":{"name":"ctor_LongcallEnterScopeInstruction","path":"scripts/ctor_LongcallEnterScopeInstruction/ctor_LongcallEnterScopeInstruction.yy",},},
     {"id":{"name":"ctor_LongcallEnvironment","path":"scripts/ctor_LongcallEnvironment/ctor_LongcallEnvironment.yy",},},
     {"id":{"name":"ctor_LongcallEvaluation","path":"scripts/ctor_LongcallEvaluation/ctor_LongcallEvaluation.yy",},},
