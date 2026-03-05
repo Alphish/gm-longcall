@@ -1,7 +1,11 @@
-function LongcallEnterScopeInstruction(_branch) : LongcallInstruction() constructor {
+function LongcallEnterScopeInstruction(_branch) : LongcallBlock() constructor {
     branch = _branch;
     
-    static execute = function(_call) {
-        _call.enter_scope(branch);
+    static resolve_branch = function() {
+        return branch;
+    }
+    
+    static on_close = function(_call, _scope) {
+        // do nothing
     }
 }

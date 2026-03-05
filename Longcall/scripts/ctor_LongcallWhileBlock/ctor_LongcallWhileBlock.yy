@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"ctor_LongcallContinueInstruction",
+  "%Name":"ctor_LongcallWhileBlock",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"ctor_LongcallContinueInstruction",
+  "name":"ctor_LongcallWhileBlock",
   "parent":{
     "name":"Loops",
     "path":"folders/_Packages/Alphish/Longcall/Instructions/Flow/Loops.yy",

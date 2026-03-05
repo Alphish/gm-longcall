@@ -64,9 +64,16 @@ LongcallException.unknown_truthiness = function(_value) {
         );
 }
 
-LongcallException.illegal_break = function(_value) {
+LongcallException.leaving_unrelated_scope = function(_scope) {
     return new LongcallException(
-        nameof(illegal_break),
-        $"'break' and 'continue' instructions can only be used within a breakable scope."
+        nameof(leaving_unrelated_scope),
+        $"Could not leave the given '{instanceof(_scope)}' scope, because the call isn't within the scope to begin with."
+        );
+}
+
+LongcallException.unhandled_scope_instruction = function(_name) {
+    return new LongcallException(
+        nameof(unhandled_scope_instruction),
+        $"The '{_name}' instruction couldn't be handled by any of containing scopes."
         );
 }

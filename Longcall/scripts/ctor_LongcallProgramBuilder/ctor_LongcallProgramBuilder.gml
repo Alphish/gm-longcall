@@ -134,7 +134,7 @@ function LongcallProgramBuilder() {
         end_branch();
         var _condition = take_builder_value("condition");
         var _body = take_branch("body").build();
-        var _instruction = new LongcallWhileInstruction(_condition, _body);
+        var _instruction = new LongcallWhileBlock(_condition, _body);
         add_instruction(_instruction);
     }
     
