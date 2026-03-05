@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ctor_LongcallChoiceBlock",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ctor_LongcallChoiceBlock",
+  "parent":{
+    "name":"Choice",
+    "path":"folders/_Packages/Alphish/Longcall/Instructions/Prompts/Choice.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
