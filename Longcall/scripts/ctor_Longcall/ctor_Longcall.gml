@@ -73,12 +73,6 @@ function Longcall(_program, _environment, _subroutine = undefined) constructor {
     // Flow
     // ----
     
-    static enter_branch = function(_branch, _sctor = undefined) {
-        _sctor ??= LongcallScope;
-        var _scope = new _sctor(_branch, scope.environment, scope);
-        enter_scope(_scope);
-    }
-    
     static enter_scope = function(_scope) {
         scope = _scope;
     }
