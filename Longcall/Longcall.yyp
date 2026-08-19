@@ -30,7 +30,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.3.217",
+    "IDEVersion":"2026.0.0.16",
   },
   "name":"Longcall",
   "resources":[
@@ -54,6 +54,7 @@
     {"id":{"name":"ctor_LongcallBreakInstruction","path":"scripts/ctor_LongcallBreakInstruction/ctor_LongcallBreakInstruction.yy",},},
     {"id":{"name":"ctor_LongcallBreakLoopHandler","path":"scripts/ctor_LongcallBreakLoopHandler/ctor_LongcallBreakLoopHandler.yy",},},
     {"id":{"name":"ctor_LongcallBreakOnceHandler","path":"scripts/ctor_LongcallBreakOnceHandler/ctor_LongcallBreakOnceHandler.yy",},},
+    {"id":{"name":"ctor_LongcallCallbackInstruction","path":"scripts/ctor_LongcallCallbackInstruction/ctor_LongcallCallbackInstruction.yy",},},
     {"id":{"name":"ctor_LongcallChoiceBlock","path":"scripts/ctor_LongcallChoiceBlock/ctor_LongcallChoiceBlock.yy",},},
     {"id":{"name":"ctor_LongcallChoiceObjectPrompt","path":"scripts/ctor_LongcallChoiceObjectPrompt/ctor_LongcallChoiceObjectPrompt.yy",},},
     {"id":{"name":"ctor_LongcallChoiceOptionHandler","path":"scripts/ctor_LongcallChoiceOptionHandler/ctor_LongcallChoiceOptionHandler.yy",},},
