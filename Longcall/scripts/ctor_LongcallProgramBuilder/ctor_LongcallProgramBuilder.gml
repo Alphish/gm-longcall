@@ -50,6 +50,25 @@ function LongcallProgramBuilder() {
         return new LongcallProgram(built_entry, built_subroutines);
     }
     
+    // ---------
+    // Callbacks
+    // ---------
+    
+    static execute_function = function(_func) {
+        // prevents binding to the builder when given anonymous builder-bound method
+        if (is_method(_func) && method_get_self(_func) == self)
+            _func = method_get_index(_func);
+        
+        var _instruction = new LongcallCallbackInstruction(_func);
+        add_instruction(_instruction);
+    }
+    
+    static execute_method = function(_context, _func) {
+        var _method = method(_context, _func);
+        var _instruction = new LongcallCallbackInstruction(_method);
+        add_instruction(_instruction);
+    }
+    
     // ------
     // Values
     // ------
