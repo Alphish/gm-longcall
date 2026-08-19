@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"ctor_PrintValueInstruction",
   "parent":{
-    "name":"Instructions",
-    "path":"folders/Demo/Instructions.yy",
+    "name":"Demo",
+    "path":"folders/Demo.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
