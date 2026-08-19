@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"ctor_LogReceivedInstruction",
+  "%Name":"ctor_LongcallCallbackInstruction",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"ctor_LogReceivedInstruction",
+  "name":"ctor_LongcallCallbackInstruction",
   "parent":{
     "name":"Instructions",
-    "path":"folders/Demo/Instructions.yy",
+    "path":"folders/_Packages/Alphish/Longcall/Instructions.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

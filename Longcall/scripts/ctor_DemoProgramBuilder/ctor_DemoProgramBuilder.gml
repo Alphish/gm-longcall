@@ -1,12 +1,14 @@
 function DemoProgramBuilder() : LongcallProgramBuilder() constructor {
     static log = function(_message) {
-        var _instruction = new LogInstruction(_message);
-        add_instruction(_instruction);
+        execute_method({ message: _message }, function() {
+            show_debug_message(message);
+        });
     }
     
     static log_received = function() {
-        var _instruction = new LogReceivedInstruction();
-        add_instruction(_instruction);
+        execute_function(function(_call, _args) {
+            show_debug_message(_args);
+        });
     }
     
     static print_value = function(_name) {
