@@ -23,7 +23,7 @@ function LongcallProgramBuilder() {
     }
     
     static end_branch = function() {
-        current_branch = current_branch.parent;
+        current_branch = current_branch.get_parent();
     }
     
     static take_branch = function(_name) {
@@ -31,11 +31,20 @@ function LongcallProgramBuilder() {
     }
     
     static end_subroutine = function() {
+        if (is_undefined(root_branch))
+            return;
+        
+        if (current_branch != root_branch)
+            throw LongcallException.building_unclosed_nested_branches();
+        
         var _branch = root_branch.build();
         if (is_undefined(subroutine_name))
             built_entry = _branch;
         else
             built_subroutines[$ subroutine_name] = _branch;
+        
+        root_branch = undefined;
+        current_branch = LongcallBranchSentinel.instance;
     }
     
     static begin_subroutine = function(_name) {

@@ -22,6 +22,20 @@ LongcallException.not_implemented = function(_context, _method) {
         );
 }
 
+LongcallException.building_no_target_routine = function() {
+    return new LongcallException(
+        nameof(building_no_target_routine),
+        $"There is no target routine or subroutine to build or perform building operations on."
+        );
+}
+
+LongcallException.building_unclosed_nested_branches = function() {
+    return new LongcallException(
+        nameof(building_unclosed_nested_branches),
+        $"Cannot complete a routine or subroutine before closing all of its nested branches."
+        );
+}
+
 LongcallException.undeclared_value = function(_name) {
     return new LongcallException(
         nameof(undeclared_value),
