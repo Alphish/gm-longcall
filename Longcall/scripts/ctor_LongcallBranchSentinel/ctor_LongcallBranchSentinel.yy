@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ctor_LongcallBranchSentinel",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ctor_LongcallBranchSentinel",
+  "parent":{
+    "name":"Building",
+    "path":"folders/_Packages/Alphish/Longcall/Building.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

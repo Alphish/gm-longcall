@@ -18,6 +18,10 @@ function LongcallBranchBuilder(_parent = undefined) constructor {
         return _value;
     }
     
+    static get_parent = function() {
+        return parent;
+    }
+    
     static begin_branch = function(_name) {
         var _branch = new LongcallBranchBuilder(self);
         inner_branches[$ _name] = _branch;
